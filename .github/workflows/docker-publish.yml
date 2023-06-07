@@ -95,8 +95,8 @@ jobs:
       - name: Delete old images
         uses: snok/container-retention-policy@v2
         with:
-          image-names: oscarsiles/caddy*
-          cut-off: One month ago UTC
+          image-names: caddy*
+          cut-off: 1 week ago UTC
           keep-at-least: 3
           account-type: personal
           token: ${{ secrets.PAT }}
