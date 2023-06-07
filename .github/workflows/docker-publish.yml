@@ -92,3 +92,15 @@ jobs:
         # This step uses the identity token to provision an ephemeral certificate
         # against the sigstore community Fulcio instance.
         run: echo "${{ steps.meta.outputs.tags }}" | xargs -I {} cosign sign {}@${{ steps.build-and-push.outputs.digest }}
+      - uses: actions/delete-package-versions@v4
+        with: 
+          package-name: 'caddy-crowdsec-boucer'
+          package-type: 'container'
+          min-versions-to-keep: 0
+          delete-only-untagged-versions: 'false'
+      - uses: actions/delete-package-versions@v4
+        with: 
+          package-name: 'caddy-custom'
+          package-type: 'container'
+          min-versions-to-keep: 3
+          delete-only-untagged-versions: 'false'
