@@ -10,3 +10,5 @@ RUN xcaddy build \
 
 FROM caddy:2.7-alpine
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
+
+CMD ["caddy", "docker-proxy"]
