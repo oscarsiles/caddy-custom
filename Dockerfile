@@ -1,4 +1,4 @@
-FROM caddy:2.7-builder-alpine AS builder
+FROM --platform=$TARGETPLATFORM caddy:2.7-builder-alpine AS builder
 
 RUN xcaddy build \
   --with github.com/abiosoft/caddy-json-schema \
@@ -10,7 +10,7 @@ RUN xcaddy build \
   --with github.com/fvbommel/caddy-dns-ip-range \
   --with github.com/fvbommel/caddy-combine-ip-ranges
 
-FROM caddy:2.7-alpine
+FROM --platform=$TARGETPLATFORM caddy:2.7-alpine
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
 
 CMD ["caddy", "docker-proxy"]
