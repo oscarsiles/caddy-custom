@@ -12,5 +12,4 @@ RUN xcaddy build \
 FROM --platform=$TARGETPLATFORM caddy:2.7-alpine
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
 
-CMD ["caddy" "run" "--config" "/etc/caddy/Caddyfile" "--adapter" "caddyfile"]
 HEALTHCHECK --interval=30s --timeout=3s --start-period=1m CMD wget -q --tries=1 --spider http://localhost:2019/metrics || exit 1
