@@ -1,7 +1,7 @@
 FROM --platform=$TARGETPLATFORM caddy:2.9-builder-alpine AS builder
 
 RUN xcaddy build \
-  --with github.com/hslatman/caddy-crowdsec-bouncer/http \
+#  --with github.com/hslatman/caddy-crowdsec-bouncer/http \
   --with github.com/WeidiDeng/caddy-cloudflare-ip \
   --with github.com/caddy-dns/cloudflare \
   --with github.com/lucaslorentz/caddy-docker-proxy/v2 \
