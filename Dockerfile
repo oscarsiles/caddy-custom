@@ -8,7 +8,8 @@ RUN xcaddy build \
   --with github.com/fvbommel/caddy-dns-ip-range \
   --with github.com/fvbommel/caddy-combine-ip-ranges \
   --with github.com/caddyserver/replace-response \
-  --with github.com/caddyserver/cache-handler
+  --with github.com/caddyserver/cache-handler \
+  --with github.com/mholt/caddy-l4
 
 FROM --platform=$TARGETPLATFORM caddy:2.9-alpine
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
